@@ -17,23 +17,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Employee removeEmployee(String firstName, String lastName) {
         Employee worker = new Employee(firstName, lastName);
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).equals(worker)) {
-                employeeList.remove(i);
-                return worker;
-            }
-        }
-        throw new NotFoundEmployeeException();
+        if (employeeList.remove(worker)) {
+            return worker;
+        } else throw new NotFoundEmployeeException();
     }
 
     public Employee findEmployee(String firstName, String lastName) {
         Employee worker = new Employee(firstName, lastName);
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList.get(i).equals(worker)) {
-                return employeeList.get(i);
-            }
+        if (employeeList.indexOf(worker) != -1) {
+            return worker;
         }
-        throw new NotFoundEmployeeException();
+        else{
+            throw new NotFoundEmployeeException();
+        }
     }
 
     public List<Employee> getEmployeeList () {

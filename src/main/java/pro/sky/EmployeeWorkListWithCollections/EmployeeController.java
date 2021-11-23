@@ -18,13 +18,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/add")
-    public String addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return "Сотрудник " + employeeServiceImpl.addEmployee(firstName, lastName) + " добавлен!";
+    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
+        return employeeServiceImpl.addEmployee(firstName, lastName);
     }
 
     @GetMapping("/remove")
-    public String removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
-        return "Сотрудник " + employeeServiceImpl.removeEmployee(firstName, lastName) + " удален!";
+    public Employee removeEmployee(@RequestParam String firstName, @RequestParam String lastName) {
+        return employeeServiceImpl.removeEmployee(firstName, lastName);
     }
 
     @GetMapping("/find")
