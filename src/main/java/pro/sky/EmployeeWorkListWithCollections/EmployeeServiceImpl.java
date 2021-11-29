@@ -19,7 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee worker = new Employee(firstName, lastName);
         if (employeeList.remove(worker)) {
             return worker;
-        } else throw new NotFoundEmployeeException();
+        }
+        throw new NotFoundEmployeeException();
     }
 
     public Employee findEmployee(String firstName, String lastName) {
@@ -27,9 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeList.indexOf(worker) != -1) {
             return worker;
         }
-        else{
-            throw new NotFoundEmployeeException();
-        }
+        throw new NotFoundEmployeeException();
     }
 
     public List<Employee> getEmployeeList () {
